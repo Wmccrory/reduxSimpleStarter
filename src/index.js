@@ -1,15 +1,20 @@
+// JSX Bundler for rendering React components //
+
+// dependencies //
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
 
-import App from './components/app';
-import reducers from './reducers';
+import SearchBar from './components/search_bar';
+import API_KEY from './keys.js';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+// JSX //
+const App = () => {
+	return (
+		<div>
+			<h1>{API_KEY}</h1>
+			<SearchBar />
+		</div>
+	)
+}
 
-ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>
-  , document.querySelector('.container'));
+ReactDOM.render(<App />, document.querySelector('.container'));
